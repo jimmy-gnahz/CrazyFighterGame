@@ -1,5 +1,5 @@
 import pygame
-#from Street_Fighter_Game1 import *
+from random import randint
 "///color values///"
 BLACK = [  0,   0,   0]
 WHITE = [255, 255, 255]
@@ -10,6 +10,30 @@ GREEN = [ 0 , 255 , 0 ]
 "///other values///"
 size = [1000,644]
 screen = pygame.display.set_mode(size)
+done = False
+clock = pygame.time.Clock()
+player_x = 0 
+enemy_x = 800
+hit_enemy = False
+fireball_x = 275
+draw_fireball_trigger = False 
+move_forward_trigger = False
+move_backward_trigger = False
+player_text ="100/100"
+enemy_text = "125/125"
+player_mana_text = "100/100"
+enemy_mana_text = "100/100"
+#game values
+player_hp = 100
+player_mana = 80
+enemy_hp = 125
+player_physical_damage = 20
+player_magic_damage = randint(20,40)
+player_magic_mana_usage = 30
+player_ultimate_damage = randint(30,50) 
+player_ultimate_mana_usage = 50
+game_over = False
+enemy_p_damage = 15
 
 def draw_player(x,y):
     pygame.draw.polygon(screen,BLUE, [[ 100 + x, 0 + y ], [0 + x, 50 + y], [200 + x, 50 + y]], 0) 
@@ -34,3 +58,19 @@ def draw_enemy(a,b):
     
 def draw_fireball(x):
     pygame.draw.circle(screen,RED, [x, 250],int((fireball_x - 275)/3.0))
+    
+def draw_font():
+    player_text = str(player_hp) + "/100"
+    myfont = pygame.font.SysFont("monospace", 20, True)
+    label = myfont.render(player_text, 1, RED)
+    screen.blit(label, (5, 50))
+    
+    enemy_text = str(enemy_hp) + "/125"
+    label2 = myfont.render(enemy_text, 1, RED)
+    screen.blit(label2, (840, 50))
+    
+    label3 = myfont.render(player_mana_text, 1, BLUE)
+    screen.blit(label3, (5, 150))
+    
+    label4 = myfont.render(enemy_mana_text, 1, BLUE)
+    screen.blit(label4, (840, 150))        
