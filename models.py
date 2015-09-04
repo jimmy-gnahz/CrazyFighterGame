@@ -33,6 +33,7 @@ player_ultimate_damage = randint(30,50)
 player_ultimate_mana_usage = 50
 game_over = False
 enemy_p_damage = 15
+atk_trigger = True
 
 #draw 
 def draw_player(x,y):
@@ -60,7 +61,7 @@ def draw_fireball(x):
     pygame.draw.circle(screen,RED, [x, 250],int((fireball_x - 275)/3.0))
 
 #font
-def draw_font(player_hp,enemy_hp):
+def draw_hp_font(player_hp,enemy_hp):
     player_text = str(player_hp) + "/100"
     myfont = pygame.font.SysFont("monospace", 20, True)
     label = myfont.render(player_text, 1, RED)
@@ -74,4 +75,10 @@ def draw_font(player_hp,enemy_hp):
     screen.blit(label3, (5, 150))
     
     label4 = myfont.render(enemy_mana_text, 1, BLUE)
-    screen.blit(label4, (840, 150))        
+    screen.blit(label4, (840, 150)) 
+
+def draw_game_msg_font(damage,atk_type):
+    myfont = pygame.font.SysFont("monospace", 20, True)
+    message = "Enemy dealt " + str(damage) + " damage to you " + atk_type
+    label5 = myfont.render(message, 1, RED)
+    screen.blit(label5, (300, 50))
