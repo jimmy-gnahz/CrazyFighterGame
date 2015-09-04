@@ -1,13 +1,14 @@
 import pygame
 from random import randint
-"///color values///"
+
+#colors
 BLACK = [  0,   0,   0]
 WHITE = [255, 255, 255]
 RED = [255, 0 , 0]
 BLUE = [0, 0, 255]
 YELLOW = [255, 255, 0]
 GREEN = [ 0 , 255 , 0 ]
-"///other values///"
+#values
 size = [1000,644]
 screen = pygame.display.set_mode(size)
 done = False
@@ -24,9 +25,7 @@ enemy_text = "125/125"
 player_mana_text = "100/100"
 enemy_mana_text = "100/100"
 #game values
-player_hp = 100
 player_mana = 80
-enemy_hp = 125
 player_physical_damage = 20
 player_magic_damage = randint(20,40)
 player_magic_mana_usage = 30
@@ -35,6 +34,7 @@ player_ultimate_mana_usage = 50
 game_over = False
 enemy_p_damage = 15
 
+#draw 
 def draw_player(x,y):
     pygame.draw.polygon(screen,BLUE, [[ 100 + x, 0 + y ], [0 + x, 50 + y], [200 + x, 50 + y]], 0) 
     pygame.draw.circle(screen,BLUE, [100 + x, 75 + y], 50)
@@ -46,7 +46,7 @@ def draw_player(x,y):
     #wand
     pygame.draw.polygon(screen,BLACK, [[ 255 + x, 55 + y ], [275 + x, 75 + y], [200 + x, 150+ y], [150 + x, 150 + y]], 0)     
     pygame.draw.circle(screen,YELLOW, [275 + x, 50 + y], 25)
- 
+
 def draw_enemy(a,b): 
     pygame.draw.polygon(screen,BLACK, [[ 10 + a, 150 + b ], [20 + a, 20 + b], [30 + a, 150 + b]], 0) 
     pygame.draw.circle(screen,RED, [100 + a, 75 + b], 50) 
@@ -58,8 +58,9 @@ def draw_enemy(a,b):
     
 def draw_fireball(x):
     pygame.draw.circle(screen,RED, [x, 250],int((fireball_x - 275)/3.0))
-    
-def draw_font():
+
+#font
+def draw_font(player_hp,enemy_hp):
     player_text = str(player_hp) + "/100"
     myfont = pygame.font.SysFont("monospace", 20, True)
     label = myfont.render(player_text, 1, RED)
