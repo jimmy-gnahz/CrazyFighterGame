@@ -49,7 +49,7 @@ enemy_text = "125/125"
 player_mana_text = "100/100"
 enemy_mana_text = "100/100"
 #game values
-player_hp = 100
+player_hp = 101
 player_mana = 80
 enemy_hp = 125
 player_physical_damage = 20
